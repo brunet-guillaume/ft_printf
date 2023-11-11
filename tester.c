@@ -6,12 +6,14 @@
 /*   By: gbrunet <guill@umebrunet.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 20:50:53 by gbrunet           #+#    #+#             */
-/*   Updated: 2023/11/11 21:52:36 by gbrunet          ###   ########.fr       */
+/*   Updated: 2023/11/11 23:48:28 by gbrunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "includes/ft_printf.h"
+
 int	main(void)
 {
-	ft_printf("salut");
+	ft_printf("%%%%sa%%lut");
 	return (0);
 }

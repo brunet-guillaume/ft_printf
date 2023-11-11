@@ -6,7 +6,7 @@
 #    By: gbrunet <guill@umebrunet.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/11 21:40:01 by gbrunet           #+#    #+#              #
-#    Updated: 2023/11/11 22:12:28 by gbrunet          ###   ########.fr        #
+#    Updated: 2023/11/11 22:34:06 by gbrunet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,7 @@ SRC = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJ = $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
+	mkdir -p $(OBJ_DIR)
 	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
 .PHONY :  all clean fclean re tester
@@ -54,4 +55,4 @@ fclean : clean
 re : fclean all
 
 tester : all
-	$(CC) $(FLAGS) $(NAME) tester.c tester
+	$(CC) $(FLAGS) $(NAME) tester.c -o tester && ./tester

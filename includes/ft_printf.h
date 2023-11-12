@@ -6,7 +6,7 @@
 /*   By: gbrunet <guill@umebrunet.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 20:52:02 by gbrunet           #+#    #+#             */
-/*   Updated: 2023/11/12 02:00:08 by gbrunet          ###   ########.fr       */
+/*   Updated: 2023/11/12 03:12:03 by gbrunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "../libft/libft.h"
 # include <stdarg.h>
+# include <stdlib.h>
 # include <stdio.h>
 
 typedef struct s_opt {

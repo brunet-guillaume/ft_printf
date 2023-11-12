@@ -6,7 +6,7 @@
 /*   By: gbrunet <guill@umebrunet.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/12 10:02:18 by gbrunet           #+#    #+#             */
-/*   Updated: 2023/11/12 10:05:29 by gbrunet          ###   ########.fr       */
+/*   Updated: 2023/11/12 10:27:58 by gbrunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ size_t	print_d(t_opt opts, va_list *ap)
 		print_c_i(' ', opts.width - max(ft_intlen(d), opts.dot)
 			- max(opts.plus, opts.space));
 	print_int_sign(opts, d);
-	if (opts.dot)
+	if (opts.dot != -1)
 		print_c_i('0', opts.dot - ft_intlen(d));
 	if (d < 0)
 		ft_putstr_fd(&s[1], 1);

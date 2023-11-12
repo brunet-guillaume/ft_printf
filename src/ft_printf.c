@@ -6,7 +6,7 @@
 /*   By: gbrunet <guill@umebrunet.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 19:46:19 by gbrunet           #+#    #+#             */
-/*   Updated: 2023/11/12 04:37:28 by gbrunet          ###   ########.fr       */
+/*   Updated: 2023/11/12 05:22:33 by gbrunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,11 +130,34 @@ void	print_c_i(char c, int i)
 		ft_putchar_fd(c, 1);
 }
 
-size_t	max(size_t a, size_t b)
+int	max(int a, int b)
 {
 	if (b > a)
 		return (b);
 	return (a);
+}
+
+void	print_int_sign(t_opt opts, int d)
+{
+	if (d < 0)
+		ft_putchar_fd('-', 1);
+	if (opts.plus && d >= 0)
+		ft_putchar_fd('+', 1);
+	if (opts.space && !opts.plus && d >= 0)
+		ft_putchar_fd(' ', 1);
+}
+
+size_t	get_int_size(t_opt opts, int d)
+{
+	size_t	len;
+	size_t	sign;
+	
+	sign = 0;
+	if (opts.space || opts.plus || d < 0)
+		sign = 1;
+	len = max(ft_intlen(d) + sign, opts.dot);
+	len = max(len, opts.width);
+	return (len);
 }
 
 size_t	print_d(t_opt opts, va_list *ap)
@@ -149,12 +172,7 @@ size_t	print_d(t_opt opts, va_list *ap)
 	if (!opts.minus)
 		print_c_i(' ', opts.width - max(ft_intlen(d), opts.dot)
 			- max(opts.plus, opts.space));
-	if (d < 0)
-		ft_putchar_fd('-', 1);
-	if (opts.plus && d >= 0)
-		ft_putchar_fd('+', 1);
-	if (opts.space && !opts.plus && d >= 0)
-		ft_putchar_fd(' ', 1);
+	print_int_sign(opts, d);
 	if (opts.dot)
 		print_c_i('0', opts.dot - ft_intlen(d));
 	if (d < 0)
@@ -164,7 +182,8 @@ size_t	print_d(t_opt opts, va_list *ap)
 	if (opts.minus)
 		print_c_i(' ', opts.width - max(ft_intlen(d), opts.dot)
 			- max(opts.plus, opts.space));
-	return (1);
+	free(s);
+	return (get_int_size(opts, d));
 }
 
 size_t	print_value(t_opt options, va_list *ap)
@@ -182,10 +201,10 @@ size_t	parser(const char *format, va_list *ap)
 	size_t	i;
 	size_t	add;
 	t_opt	options;
-	//size_t	count;
+	size_t	count;
 	
 	i = 0;
-	//count = 0;
+	count = 0;
 	while (format[i])
 	{
 		if(format[i] == '%' && format[i + 1])
@@ -194,29 +213,25 @@ size_t	parser(const char *format, va_list *ap)
 			if (options.type)
 			{
 				i += add;
-				print_value(options, ap);
+				count += print_value(options, ap) - 1;
 			}
 			else
 				ft_putchar_fd('%', 1);
 		}
 		else
-		{
 			ft_putchar_fd(format[i], 1);
-			//count++;
-		}
 		i++;
-		
+		count++;	
 	}
-	return(0);
+	return(count);
 }
 
 int	ft_printf(const char *format, ...)
 {
 	va_list	ap;
-	size_t	c;
+	size_t	count;
 
 	va_start(ap, format);
-	c = parser(format, &ap);
-	(void) c;
-	return (0);
+	count = parser(format, &ap);
+	return (count);
 }

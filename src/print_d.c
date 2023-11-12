@@ -6,27 +6,11 @@
 /*   By: gbrunet <guill@umebrunet.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/12 10:02:18 by gbrunet           #+#    #+#             */
-/*   Updated: 2023/11/12 17:31:04 by gbrunet          ###   ########.fr       */
+/*   Updated: 2023/11/12 18:24:50 by gbrunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
-
-void	print_d_num(int nb)
-{
-	long	nbr;
-
-	nbr = nb;
-	if (nb < 0)
-		nbr = -nbr;
-	if (nbr >= 10)
-	{
-		print_d_num(nbr / 10);
-		print_d_num(nbr % 10);
-	}
-	if (nbr < 10)
-		ft_putchar_fd('0' + nbr, 1);
-}
 
 void	print_int_sign(t_opt opts, int d)
 {
@@ -42,7 +26,7 @@ size_t	get_int_size(t_opt opts, int d)
 {
 	size_t	len;
 	size_t	sign;
-	
+
 	sign = 0;
 	if (opts.space || opts.plus || d < 0)
 		sign = 1;

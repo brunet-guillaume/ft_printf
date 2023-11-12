@@ -6,7 +6,7 @@
 /*   By: gbrunet <guill@umebrunet.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 19:46:19 by gbrunet           #+#    #+#             */
-/*   Updated: 2023/11/12 15:16:40 by gbrunet          ###   ########.fr       */
+/*   Updated: 2023/11/12 18:46:17 by gbrunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,34 +32,41 @@ size_t	print_value(t_opt options, va_list *ap)
 	return (len);
 }
 
+size_t	updt_count(const char *format, t_opt *opts, va_list *ap, size_t *i)
+{
+	size_t	add;
+	size_t	count;
+
+	count = 0;
+	add = percent_parser(format, opts);
+	if ((*opts).type)
+	{
+		*i += add;
+		count += print_value(*opts, ap) - 1;
+	}
+	else
+		ft_putchar_fd('%', 1);
+	return (count);
+}
+
 size_t	parser(const char *format, va_list *ap)
 {
 	size_t	i;
-	size_t	add;
 	t_opt	options;
 	size_t	count;
-	
+
 	i = 0;
 	count = 0;
 	while (format[i])
 	{
-		if(format[i] == '%' && format[i + 1])
-		{
-			add = percent_parser(&format[i], &options);
-			if (options.type)
-			{
-				i += add;
-				count += print_value(options, ap) - 1;
-			}
-			else
-				ft_putchar_fd('%', 1);
-		}
+		if (format[i] == '%' && format[i + 1])
+			count += updt_count(&format[i], &options, ap, &i);
 		else
 			ft_putchar_fd(format[i], 1);
 		i++;
-		count++;	
+		count++;
 	}
-	return(count);
+	return (count);
 }
 
 int	ft_printf(const char *format, ...)

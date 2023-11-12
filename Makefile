@@ -6,7 +6,7 @@
 #    By: gbrunet <guill@umebrunet.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/11 21:40:01 by gbrunet           #+#    #+#              #
-#    Updated: 2023/11/12 16:30:20 by gbrunet          ###   ########.fr        #
+#    Updated: 2023/11/12 18:50:10 by gbrunet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ SRC_DIR = src/
 OBJ_DIR = obj/
 
 SRC_FILES = ft_printf options percent_parcer print_c print_s print_p print_d \
-		print_u print_x helper
+		print_u print_x print_x_helper helper
 
 SRC = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 
@@ -35,7 +35,7 @@ $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	mkdir -p $(OBJ_DIR)
 	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
-.PHONY : all clean fclean re bonus tester
+.PHONY : all clean fclean re bonus tester norme
 
 all : $(NAME)
 
@@ -59,3 +59,7 @@ bonus : all
 
 tester : all
 	$(CC) $(FLAGS) $(NAME) tester.c -o tester && ./tester
+
+norme :
+	@norminette $(SRC) $(LIBFT) | grep -v Norme -B1 || true
+	@norminette $(INCLUDES) -R CheckDefine | grep -v Norme -B1 || true

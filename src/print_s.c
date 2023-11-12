@@ -6,7 +6,7 @@
 /*   By: gbrunet <guill@umebrunet.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/12 10:13:43 by gbrunet           #+#    #+#             */
-/*   Updated: 2023/11/12 16:25:58 by gbrunet          ###   ########.fr       */
+/*   Updated: 2023/11/12 18:19:48 by gbrunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ size_t	print_s(t_opt opts, va_list *ap)
 	char	*s;
 	char	*initstr;
 	size_t	slen;
-	
-	initstr = va_arg(*ap, char*);
+
+	initstr = va_arg(*ap, char *);
 	if (!initstr)
 		s = ft_strdup("(null)");
 	else

@@ -6,7 +6,7 @@
 /*   By: gbrunet <guill@umebrunet.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/12 10:13:43 by gbrunet           #+#    #+#             */
-/*   Updated: 2023/11/12 11:34:48 by gbrunet          ###   ########.fr       */
+/*   Updated: 2023/11/12 18:20:14 by gbrunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ size_t	print_p(t_opt opts, va_list *ap)
 	void	*p;
 	size_t	len;
 
-	p = va_arg(*ap, void*);
+	p = va_arg(*ap, void *);
 	len = p_len((unsigned long)p);
 	if (!opts.minus)
 		print_c_i(' ', opts.width - len);

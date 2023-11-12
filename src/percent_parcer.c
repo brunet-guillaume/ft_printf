@@ -6,20 +6,20 @@
 /*   By: gbrunet <guill@umebrunet.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/12 09:50:05 by gbrunet           #+#    #+#             */
-/*   Updated: 2023/11/12 09:50:34 by gbrunet          ###   ########.fr       */
+/*   Updated: 2023/11/12 18:18:43 by gbrunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-int is_flag(char c)
+int	is_flag(char c)
 {
 	if (c == '-' || c == '0' || c == '.' || c == '#' || c == ' ' || c == '+')
 		return (1);
 	return (0);
 }
 
-int is_type(char c)
+int	is_type(char c)
 {
 	if (c == 'c' || c == 's' || c == 'p' || c == 'd' || c == 'i' || c == 'u'
 		|| c == 'x' || c == 'X' || c == '%')
@@ -34,7 +34,7 @@ int	valid_flag(char c)
 	return (0);
 }
 
-size_t percent_parser(const char *s, t_opt *options)
+size_t	percent_parser(const char *s, t_opt *options)
 {
 	size_t	i;
 

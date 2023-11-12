@@ -6,7 +6,7 @@
 /*   By: gbrunet <guill@umebrunet.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 19:46:19 by gbrunet           #+#    #+#             */
-/*   Updated: 2023/11/12 05:22:33 by gbrunet          ###   ########.fr       */
+/*   Updated: 2023/11/12 09:32:26 by gbrunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -186,11 +186,26 @@ size_t	print_d(t_opt opts, va_list *ap)
 	return (get_int_size(opts, d));
 }
 
+size_t	print_c(t_opt opts, va_list *ap)
+{
+	char	c;
+	c = (char)va_arg(*ap, int);
+
+	if (!opts.minus)
+		print_c_i(' ', opts.width - 1);
+	ft_putchar_fd(c, 1);
+	if (opts.minus)
+		print_c_i(' ', opts.width - 1);
+	return (max(1, opts.width));
+}
+
 size_t	print_value(t_opt options, va_list *ap)
 {
 	size_t	len;
 
 	len = 1;
+	if (options.type == 'c')
+		len = print_c(options, ap);
 	if (options.type == 'd')
 		len = print_d(options, ap);
 	return (len);

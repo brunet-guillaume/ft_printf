@@ -6,7 +6,7 @@
 /*   By: gbrunet <guill@umebrunet.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 19:46:19 by gbrunet           #+#    #+#             */
-/*   Updated: 2023/11/11 23:47:42 by gbrunet          ###   ########.fr       */
+/*   Updated: 2023/11/12 00:58:47 by gbrunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,14 @@ void	init_options(t_opt *options)
 	options->space = 0;
 	options->plus = 0;
 	options->length = 0;
-	options->type = '0';
+	options->type = 0;
 }
 
 void	set_type(t_opt *options, char c)
 {
 	options->type = c;
+	if (c == '%')
+		ft_putchar_fd('%', 1);
 }
 
 size_t percent_parser(const char *percent, t_opt *options)
@@ -57,18 +59,18 @@ size_t percent_parser(const char *percent, t_opt *options)
 
 	init_options(options);
 	i = 0;
-	while (percent[i++] && valid_flag(percent[i]) && options->type == '0')
+	while (percent[++i] && valid_flag(percent[i]) && !options->type)
 	{
 		if (is_type(percent[i]))
 			set_type(options, percent[i]);
 	}
-	printf("%ld", i);
-	return (i);
+	return (i - 1);
 }
 
 size_t	parser(const char *format, va_list *ap)
 {
 	size_t	i;
+	size_t	add;
 	t_opt	options;
 (void) ap;
 	
@@ -76,7 +78,13 @@ size_t	parser(const char *format, va_list *ap)
 	while (format[i])
 	{
 		if(format[i] == '%' && format[i + 1])
-			i += percent_parser(&format[i], &options);
+		{
+			add = percent_parser(&format[i], &options);
+			if (options.type)
+				i += add;
+			else
+				ft_putchar_fd('%', 1);
+		}
 		else
 			ft_putchar_fd(format[i], 1);
 		i++;
@@ -92,6 +100,6 @@ int	ft_printf(const char *format, ...)
 
 	va_start(ap, format);
 	c = parser(format, &ap);
-	printf("%ld", c);
+	(void) c;
 	return (0);
 }

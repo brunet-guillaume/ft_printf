@@ -6,7 +6,7 @@
 /*   By: gbrunet <guill@umebrunet.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 20:50:53 by gbrunet           #+#    #+#             */
-/*   Updated: 2023/11/11 23:48:28 by gbrunet          ###   ########.fr       */
+/*   Updated: 2023/11/12 00:59:35 by gbrunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,6 @@
 
 int	main(void)
 {
-	ft_printf("%%%%sa%%lut");
+	ft_printf("% dun%%%% %0ddeux%%trois");
 	return (0);
 }

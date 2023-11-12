@@ -6,7 +6,7 @@
 /*   By: gbrunet <guill@umebrunet.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 19:46:19 by gbrunet           #+#    #+#             */
-/*   Updated: 2023/11/12 01:51:43 by gbrunet          ###   ########.fr       */
+/*   Updated: 2023/11/12 02:35:22 by gbrunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	init_options(t_opt *options)
 	options->hash = 0;
 	options->space = 0;
 	options->plus = 0;
-	options->length = 0;
+	options->width = 0;
 	options->type = 0;
 }
 
@@ -74,8 +74,19 @@ size_t	set_precision(const char *s, t_opt *options)
 	i = 0;
 	options->dot = 0;
 	while (s[++i] && ft_isdigit(s[i]))
-	{
 		options->dot = options->dot * 10 + (s[i] - '0');
+	return (i - 1);
+}
+
+size_t	set_width(const char *s, t_opt *options)
+{
+	size_t	i;
+
+	i = 0;
+	while (s[i] && ft_isdigit(s[i]))
+	{
+		options->width = options->width * 10 + (s[i] - '0');
+		i++;
 	}
 	return (i - 1);
 }
@@ -91,10 +102,11 @@ size_t percent_parser(const char *s, t_opt *options)
 		if (is_type(s[i]))
 			set_type(options, s[i]);
 		else if (s[i] == '.')
-		{
 			i += set_precision(&s[i], options);
-			printf("%d", options->dot);
-		}
+		else if (ft_isdigit(s[i]))
+			i += set_width(&s[i], options);
+		else if (is_flag(s[i]))
+			set_flags(options, s[i]);
 	}
 	return (i - 1);
 }
@@ -115,7 +127,9 @@ size_t	parser(const char *format, va_list *ap)
 		{
 			add = percent_parser(&format[i], &options);
 			if (options.type)
+			{
 				i += add;
+			}
 			else
 				ft_putchar_fd('%', 1);
 		}

@@ -6,7 +6,7 @@
 /*   By: gbrunet <guill@umebrunet.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 20:52:02 by gbrunet           #+#    #+#             */
-/*   Updated: 2023/11/11 23:04:28 by gbrunet          ###   ########.fr       */
+/*   Updated: 2023/11/12 02:00:08 by gbrunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ typedef struct s_opt {
 	int		hash;
 	int		space;
 	int		plus;
-	int		length;
+	int		width;
 	char	type;
 } t_opt;
 

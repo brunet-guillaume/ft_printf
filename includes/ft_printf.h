@@ -6,7 +6,7 @@
 /*   By: gbrunet <guill@umebrunet.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 20:52:02 by gbrunet           #+#    #+#             */
-/*   Updated: 2023/11/12 03:12:03 by gbrunet          ###   ########.fr       */
+/*   Updated: 2023/11/12 10:14:43 by gbrunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,22 @@ typedef struct s_opt {
 	char	type;
 } t_opt;
 
-int	ft_printf(const char *s, ...);
-
+int		ft_printf(const char *s, ...);
+void	init_options(t_opt *options);
+void	set_type(t_opt *options, char c);
+void	set_flags(t_opt *options, char c);
+size_t	set_precision(const char *s, t_opt *options);
+size_t	set_width(const char *s, t_opt *options);
+int		is_flag(char c);
+int		is_type(char c);
+int		valid_flag(char c);
+size_t	percent_parser(const char *s, t_opt *options);
+size_t	print_d(t_opt opts, va_list *ap);
+void	print_int_sign(t_opt opts, int d);
+size_t	get_int_size(t_opt opts, int d);
+size_t	ft_intlen(int d);
+void	print_c_i(char c, int i);
+int		max(int a, int b);
+size_t	print_c(t_opt opts, va_list *ap);
 
 #endif
-

@@ -6,7 +6,7 @@
 /*   By: gbrunet <guill@umebrunet.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/12 10:13:43 by gbrunet           #+#    #+#             */
-/*   Updated: 2023/11/12 15:17:47 by gbrunet          ###   ########.fr       */
+/*   Updated: 2023/11/12 18:03:22 by gbrunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,17 @@ size_t	x_len(unsigned int nb)
 	return (len + 1);
 }
 
+size_t	calc_x_size(unsigned int x, t_opt opts)
+{
+	size_t	len;
+
+	len = 0;
+	len += x_len(x);
+	if (opts.zero)
+		len += opts.width;
+	return (len);
+}
+
 size_t	print_x(t_opt opts, va_list *ap)
 {
 	unsigned int	x;
@@ -60,14 +71,17 @@ size_t	print_x(t_opt opts, va_list *ap)
 	x = va_arg(*ap, unsigned int);
 	len = x_len((unsigned int)x);
 	if (!opts.minus)
-		print_c_i(' ', opts.width - max(len, opts.dot) - opts.hash * 2);
-	if (opts.hash)
+		print_c_i(' ', opts.width - max(calc_x_size(x, opts), opts.dot)
+			- opts.hash * 2);
+	if (opts.hash && x != 0)
 	{
 		if (opts.type == 'x')
 			ft_putstr_fd("0x", 1);
 		else
 			ft_putstr_fd("0X", 1);
 	}
+	if (opts.zero)
+		print_c_i('0', opts.width - len);
 	if (opts.dot != -1)
 		print_c_i('0', opts.dot - len);
 	if (opts.type == 'x')
@@ -75,6 +89,9 @@ size_t	print_x(t_opt opts, va_list *ap)
 	else	
 		print_X_hex((unsigned int)x);
 	if (opts.minus)
-		print_c_i(' ', opts.width - max(len, opts.dot) - opts.hash * 2);
-	return (max(len + opts.hash * 2, opts.width));
+		print_c_i(' ', opts.width - max(calc_x_size(x, opts), opts.dot)
+			- opts.hash * 2);
+	if (x == 0)
+		return(max(1, max(opts.width, opts.dot)));
+	return (max(len + opts.hash * 2, max(opts.width, opts.dot)));
 }

@@ -6,7 +6,7 @@
 #    By: gbrunet <guill@umebrunet.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/11 21:40:01 by gbrunet           #+#    #+#              #
-#    Updated: 2023/11/12 14:51:32 by gbrunet          ###   ########.fr        #
+#    Updated: 2023/11/12 16:30:20 by gbrunet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 	mkdir -p $(OBJ_DIR)
 	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 
-.PHONY : all clean fclean re tester
+.PHONY : all clean fclean re bonus tester
 
 all : $(NAME)
 
@@ -54,6 +54,8 @@ fclean : clean
 	$(RM) $(LIBFT)/libft.a
 
 re : fclean all
+
+bonus : all
 
 tester : all
 	$(CC) $(FLAGS) $(NAME) tester.c -o tester && ./tester

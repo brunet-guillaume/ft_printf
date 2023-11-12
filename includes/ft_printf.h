@@ -6,7 +6,7 @@
 /*   By: gbrunet <guill@umebrunet.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 20:52:02 by gbrunet           #+#    #+#             */
-/*   Updated: 2023/11/12 14:57:02 by gbrunet          ###   ########.fr       */
+/*   Updated: 2023/11/12 15:33:49 by gbrunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include "../libft/libft.h"
 # include <stdarg.h>
 # include <stdlib.h>
-# include <stdio.h>
 
 typedef struct s_opt {
 	int		minus;

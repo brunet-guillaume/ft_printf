@@ -6,7 +6,7 @@
 /*   By: gbrunet <guill@umebrunet.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 20:52:02 by gbrunet           #+#    #+#             */
-/*   Updated: 2023/11/12 14:37:31 by gbrunet          ###   ########.fr       */
+/*   Updated: 2023/11/12 14:57:02 by gbrunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,6 @@ size_t	print_s(t_opt opts, va_list *ap);
 size_t	print_p(t_opt opts, va_list *ap);
 size_t	get_unsigned_int_size(t_opt opts, unsigned int u);
 size_t	print_u(t_opt opts, va_list *ap);
+size_t	print_x(t_opt opts, va_list *ap);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: gbrunet <guill@umebrunet.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 19:46:19 by gbrunet           #+#    #+#             */
-/*   Updated: 2023/11/12 11:39:55 by gbrunet          ###   ########.fr       */
+/*   Updated: 2023/11/12 14:12:12 by gbrunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ size_t	print_value(t_opt options, va_list *ap)
 		len = print_p(options, ap);
 	if (options.type == 'd' || options.type == 'i')
 		len = print_d(options, ap);
+	if (options.type == 'u')
+		len = print_u(options, ap);
 	return (len);
 }
 

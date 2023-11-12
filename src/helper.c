@@ -6,11 +6,24 @@
 /*   By: gbrunet <guill@umebrunet.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/12 10:08:56 by gbrunet           #+#    #+#             */
-/*   Updated: 2023/11/12 10:09:23 by gbrunet          ###   ########.fr       */
+/*   Updated: 2023/11/12 14:41:00 by gbrunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
+
+size_t	ft_unsigned_intlen(unsigned int u)
+{
+	size_t	len;
+
+	len = 0;
+	while (u / 10 != 0)
+	{
+		u /= 10;
+		len++;
+	}
+	return (len + 1);
+}
 
 size_t	ft_intlen(int d)
 {

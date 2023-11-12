@@ -1,33 +1,55 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_s.c                                          :+:      :+:    :+:   */
+/*   print_p.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gbrunet <guill@umebrunet.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/12 10:13:43 by gbrunet           #+#    #+#             */
-/*   Updated: 2023/11/12 10:43:28 by gbrunet          ###   ########.fr       */
+/*   Updated: 2023/11/12 11:34:48 by gbrunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/ft_printf.h"
 
-size_t	print_s(t_opt opts, va_list *ap)
+void	print_p_hex(unsigned long nb)
 {
-	char	*s;
-	size_t	slen;
+	if (nb >= 16)
+	{
+		print_p_hex(nb / 16);
+		print_p_hex(nb % 16);
+	}
+	if (nb < 10)
+		ft_putchar_fd('0' + nb, 1);
+	else if (nb < 16)
+		ft_putchar_fd('a' + nb - 10, 1);
+}
 
-	s = va_arg(*ap, char*);
-	if (opts.dot != -1)
-		s = ft_substr(s, 0, opts.dot);
-			if (!s)
-				return (0);
+size_t	p_len(unsigned long nb)
+{
+	size_t	len;
+
+	len = 0;
+	while (nb / 16)
+	{
+		nb /= 16;
+		len++;
+	}
+	return (len + 3);
+}
+
+size_t	print_p(t_opt opts, va_list *ap)
+{
+	void	*p;
+	size_t	len;
+
+	p = va_arg(*ap, void*);
+	len = p_len((unsigned long)p);
 	if (!opts.minus)
-		print_c_i(' ', opts.width - ft_strlen(s));
-	ft_putstr_fd(s, 1);
+		print_c_i(' ', opts.width - len);
+	ft_putstr_fd("0x", 1);
+	print_p_hex((unsigned long)p);
 	if (opts.minus)
-		print_c_i(' ', opts.width - ft_strlen(s));
-	slen = ft_strlen(s);
-	free(s);
-	return (max(slen, opts.width));
+		print_c_i(' ', opts.width - len);
+	return (max(len, opts.width));
 }

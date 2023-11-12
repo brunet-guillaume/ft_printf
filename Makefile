@@ -6,7 +6,7 @@
 #    By: gbrunet <guill@umebrunet.fr>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/11 21:40:01 by gbrunet           #+#    #+#              #
-#    Updated: 2023/11/12 10:22:13 by gbrunet          ###   ########.fr        #
+#    Updated: 2023/11/12 10:45:27 by gbrunet          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,8 @@ SRC_DIR = src/
 
 OBJ_DIR = obj/
 
-SRC_FILES = ft_printf options percent_parcer print_c print_s print_d helper
+SRC_FILES = ft_printf options percent_parcer print_c print_s print_p print_d \
+		helper
 
 SRC = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 

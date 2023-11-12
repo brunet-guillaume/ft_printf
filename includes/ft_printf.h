@@ -6,7 +6,7 @@
 /*   By: gbrunet <guill@umebrunet.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/11 20:52:02 by gbrunet           #+#    #+#             */
-/*   Updated: 2023/11/12 10:21:33 by gbrunet          ###   ########.fr       */
+/*   Updated: 2023/11/12 10:44:59 by gbrunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,6 @@ void	print_c_i(char c, int i);
 int		max(int a, int b);
 size_t	print_c(t_opt opts, va_list *ap);
 size_t	print_s(t_opt opts, va_list *ap);
+size_t	print_p(t_opt opts, va_list *ap);
 
 #endif

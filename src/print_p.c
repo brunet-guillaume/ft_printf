@@ -44,6 +44,11 @@ size_t	print_p(t_opt opts, va_list *ap)
 	size_t	len;
 
 	p = va_arg(*ap, void *);
+	if (p == 0)
+	{
+		ft_putstr_fd("(nil)", 1);
+		return (5);
+	}
 	len = p_len((unsigned long)p);
 	if (!opts.minus)
 		print_c_i(' ', opts.width - len);

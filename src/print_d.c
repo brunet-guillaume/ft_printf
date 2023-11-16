@@ -64,6 +64,8 @@ size_t	print_d(t_opt opts, va_list *ap)
 	int	d;
 
 	d = va_arg(*ap, int);
+	if (opts.dot == 0 && d == 0)
+		return(0);
 	if (!opts.minus)
 		print_c_i(' ', opts.width - max(calc_size(d, opts), opts.dot));
 	print_int_sign(opts, d);

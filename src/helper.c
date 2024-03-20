@@ -6,11 +6,11 @@
 /*   By: gbrunet <guill@umebrunet.fr>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/12 10:08:56 by gbrunet           #+#    #+#             */
-/*   Updated: 2023/11/12 18:24:14 by gbrunet          ###   ########.fr       */
+/*   Updated: 2024/03/20 10:49:41 by gbrunet          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
+#include "ft_printf.h"
 
 void	print_d_num(int nb)
 {

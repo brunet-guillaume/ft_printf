@@ -9,7 +9,7 @@ Project in the first circle in 42 school.
 The idea here, is to implement some parts of the printf function :
 
 <table>
-    <tr><td width="40"><strong>%c</strong></td><td>prints a single character</td></tr>
+    <tr><td width="50"><strong>%c</strong></td><td>prints a single character</td></tr>
     <tr><td><strong>%s</strong></td><td>prints a string</td></tr>
     <tr><td><strong>%p</strong></td><td>prints the address of the pointer in hexadecimal format</td></tr>
     <tr><td><strong>%d</strong></td><td>prints a decimal (base 10) number</td></tr>
@@ -25,7 +25,7 @@ The idea here, is to implement some parts of the printf function :
 In the bonus part, we need to manage any combination of the field minimum width and the following flags :
 
 <table>
-    <tr><td width="40"><strong>'-'</strong></td><td>left-justify within the given field width</td></tr>
+    <tr><td width="50"><strong>'-'</strong></td><td>left-justify within the given field width</td></tr>
     <tr><td><strong>'0'</strong></td><td>left-pads the number with zeroes (0) instead of spaces when padding is specified</td></tr>
     <tr><td><strong>'.'</strong></td><td>for integer specifiers (d, i, u, x, X): precision ('.precision') specifies the minimum number of digits to be written</td></tr>
     <tr><td><strong>'#'</strong></td><td>used with x or X specifiers the value is preceeded with 0x or 0X respectively for values different than zero</td></tr>

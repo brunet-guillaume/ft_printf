@@ -11,7 +11,7 @@ The idea here, is to implement some parts of the printf function :
 <table>
     <tr><td width="50"><strong>%c</strong></td><td>prints a single character</td></tr>
     <tr><td><strong>%s</strong></td><td>prints a string</td></tr>
-    <tr><td><strong>%p</strong></td><td>prints the address of the pointer in hexadecimal format</td></tr>
+    <tr><td><strong>%p</strong></td><td>prints the address of a pointer in hexadecimal format</td></tr>
     <tr><td><strong>%d</strong></td><td>prints a decimal (base 10) number</td></tr>
     <tr><td><strong>%i</strong></td><td>prints an integer in base 10</td></tr>
     <tr><td><strong>%u</strong></td><td>prints an unsigned decimal (base 10) number</td></tr>

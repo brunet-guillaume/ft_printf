@@ -35,7 +35,7 @@ In the bonus part, we need to manage any combination of the field minimum width 
 
 ### Compilation
 ```bash
-git clone https://gitlab.com/uotiug42/ft_printf.git
+git clone https://gitlab.com/uotiug42/unix/ft_printf.git
 cd ft_printf
 # mandatory + bonus part :
 make
